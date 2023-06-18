@@ -33,17 +33,23 @@ let span = document.querySelector("#date");
 span.innerHTML = ` ${day}, ${month}, ${year}, ${hours}:${minutes}`;
 function displayTemperature(response) {
   console.log(response.data);
+  let celsiusTemp = response.data.main.temp;
   let temperatureElement = document.querySelector("#temperature");
-  temperatureElement.innerHTML = Math.round(response.data.main.temp);
+
   let cityElement = document.querySelector("#city");
-  cityElement.innerHTML = response.data.name;
+
   let descriptioElement = document.querySelector("#description");
-  descriptioElement.innerHTML = response.data.weather[0].description;
+
   let humidityElement = document.querySelector("#humidity");
-  humidityElement.innerHTML = response.data.main.humidity;
+
   let windElement = document.querySelector("#wind");
-  windElement.innerHTML = response.data.wind.speed;
+
   let iconElement = document.querySelector("#icon");
+  temperatureElement.innerHTML = Math.round(celsiusTemp);
+  cityElement.innerHTML = response.data.name;
+  descriptioElement.innerHTML = response.data.weather[0].description;
+  humidityElement.innerHTML = response.data.main.humidity;
+  windElement.innerHTML = response.data.wind.speed;
   iconElement.setAttribute(
     "src",
     `http://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`
@@ -61,7 +67,29 @@ function submit(event) {
   let cityElement = document.querySelector("#cityInput");
   search(cityElement.value);
 }
+function displayFahrenheitTemp(event) {
+  event.preventDefault();
+  let temperatureElement = document.querySelector("#temperature");
+  celsiusLink.classList.remove("active");
+  fahrenheitLink.classList.add("active");
+  let fahrenheitTemp = (celsiusTemp * 9) / 5 + 32;
 
-search("Rome");
+  temperatureElement.innerHTML = Math.round(fahrenheitTemp);
+}
+function displayCelsiustemp(event) {
+  event.preventDefault();
+  celsiusLink.classList.add("active");
+  fahrenheitLink.classList.remove("active");
+  temperatureElement = document.querySelector("#temperature");
+}
+
+let celsiusTemp = null;
 let form = document.querySelector("#search-form");
 form.addEventListener("submit", submit);
+
+let fahrenheitLink = document.querySelector("#fahrenheitValue");
+fahrenheitLink.addEventListener("click", displayFahrenheitTemp);
+
+let celsiusLink = document.querySelector("#celsiusValue");
+celsiusLink.addEventListener("click", displayCelsiustemp);
+search("Rome");
