@@ -1,3 +1,28 @@
+let now = new Date();
+let date = document.querySelector("#date");
+let minutes = now.getMinutes();
+let hours = now.getHours();
+let datee = now.getDate();
+let year = now.getFullYear();
+let days = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
+let day = days[now.getDay()];
+let months = [
+  "Jan",
+  "Feb",
+  "Mar",
+  "Apr",
+  "May",
+  "June",
+  "July",
+  "Aug",
+  "Sep",
+  "Oct",
+  "Nov",
+  "Dec"
+];
+let month = months[now.getMonth()];
+let span = document.querySelector("#date");
+span.innerHTML = ` ${day}, ${month}, ${year}, ${hours}:${minutes}`;
 function displayTemperature(response){
     console.log(response.data.main.temp)
     let temperatureElement= document.querySelector("#temperature");
