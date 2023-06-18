@@ -5,12 +5,3 @@
     border: 1px solid #dadde1;
     border-radius: 5px;
 }
-h1{
-    font-family: arial,sans-serif;
-    clear: both;
-    margin-left: 0;
-    padding-top: 20px;
-    box-sizing: border-box;
-    position: relative;
-    min-height: 100vh;
-}
