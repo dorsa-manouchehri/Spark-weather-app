@@ -28,41 +28,54 @@
 
   <body>
     <div class="container">
+      <div class="weather-app-wrapper">
       <div class="weather-app">
+        <div class="overview">
         <h1>New York</h1>
         <ul>
           <li>Friday 05:00</li>
           <li>clear</li>
         </ul>
         <div class="row">
-          <div class="col-xl-6 temperature">
+          <div class="col-6 ">
+            <div class="d-flex weather-temperature">
             <img
               src="https://ssl.gstatic.com/onebox/weather/64/partly_cloudy.png"
               alt="clear"
+              
             />
-            12
+            <div>
+              <strong id="temperature">12</strong
+              ><span class="units"> °C|<a href="#">°F</a></span>
+            </div>
+            
           </div>
-          <div class="col-xl-6">
+          </div>
+          <div class="col-6">
             <ul>
               <li>Percipitation:</li>
               <li>Wind:</li>
               <li>Humidity:</li>
             </ul>
           </div>
+          </div>
         </div>
       
     
 
    
-    <small>
-      <a
-        href="https://github.com/dorsa-manouchehri/week7-weather-app"
-        target="_blank"
-        >open-source code</a
-      ><span>, coded by Dorsa Manouchehri</span></small
-    >
+    
   </div>
+  <small>
+    <a
+      href="https://github.com/dorsa-manouchehri/week7-weather-app"
+      target="_blank"
+      >open-source code</a
+    ><span>, coded by Dorsa Manouchehri</span></small
+  >
 </div>
-    <script src="index.js"></script>
+
+</div>
+<script src="index.js"></script>
   </body>
 </html>
