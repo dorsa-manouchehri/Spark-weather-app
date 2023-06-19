@@ -33,7 +33,7 @@ let span = document.querySelector("#date");
 span.innerHTML = ` ${day}, ${month}, ${year}, ${hours}:${minutes}`;
 function displayTemperature(response) {
   console.log(response.data);
-  let celsiusTemp = response.data.main.temp;
+  celsiusTemp = response.data.main.temp;
   let temperatureElement = document.querySelector("#temperature");
 
   let cityElement = document.querySelector("#city");
