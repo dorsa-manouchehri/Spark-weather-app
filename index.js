@@ -60,4 +60,38 @@ function search(city) {
   let apiKey = "5f472b7acba333cd8a035ea85a0d4d4c";
   let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric`;
 
-axios.get(apiUrl).then(displayTemperature);
+  axios.get(apiUrl).then(displayTemperature);
+}
+function submit(event) {
+  event.preventDefault();
+  let cityElement = document.querySelector("#cityInput");
+  search(cityElement.value);
+}
+function displayFahrenheitTemp(event) {
+  event.preventDefault();
+  let temperatureElement = document.querySelector("#temperature");
+  celsiusLink.classList.remove("active");
+  fahrenheitLink.classList.add("active");
+  let fahrenheitTemp = (celsiusTemp * 9) / 5 + 32;
+
+  temperatureElement.innerHTML = Math.round(fahrenheitTemp);
+}
+function displayCelsiustemp(event) {
+  event.preventDefault();
+  fahrenheitLink.classList.remove("active");
+  celsiusLink.classList.add("active");
+  
+  let temperatureElement = document.querySelector("#temperature");
+  temperatureElement.innerHTML = Math.round(celsiusTemp);
+}
+
+let celsiusTemp = null;
+let form = document.querySelector("#search-form");
+form.addEventListener("submit", submit);
+
+let fahrenheitLink = document.querySelector("#fahrenheitValue");
+fahrenheitLink.addEventListener("click", displayFahrenheitTemp);
+
+let celsiusLink = document.querySelector("#celsiusValue");
+celsiusLink.addEventListener("click", displayCelsiustemp);
+search("Rome");
