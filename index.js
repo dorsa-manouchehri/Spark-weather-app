@@ -90,9 +90,9 @@ function displayTemperature(response) {
   windElement.innerHTML = response.data.wind.speed;
   iconElement.setAttribute(
     "src",
-    `http://shecodes-assets.s3.amazonaws.com/api/weather/icons/${response.data.condition.icon}`
+    `${response.data.condition.icon_url}`
   );
-  iconElement.setAttribute("alt", response.data.weather[0].description);
+  iconElement.setAttribute("alt", response.data.condition.icon);
 
   getForecast(response.data.coordinates);
 }
